@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title></title>
+ <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+
+<style>
+  body{
+    background-image:  url('https://wallpaper.dog/download-wallpaper/86890_romantic-love-wallpapers');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+   }
+   header{
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.9;
+   }
+</style>
+</head>
+<body>
+
+<header >
+ 
+<div class="card w-50 m-auto text-center ">
+  <div class="card-header bg-danger text-white">LOVE CALCULATOR</div>
+  <div class="card-body">
+   <form class="form-inline w-75 m-auto">
+    <div class="form-group">
+     <input type="text" name="" class="form-control text-center" placeholder="Your Name" id="name" >
+    </div>
+    <div class="pl-4 pr-4">
+     <span> + </span>
+    </div>
+    <div class="form-group">
+     <input type="text" name="" class="form-control text-center" placeholder=" Your crush Name" id="lname">
+    </div>
+   </form> <br>
+    <div class="w-70 m-auto">
+     <button  class="btn btn-success w-50" onclick="checkloveper()"> click </button>
+    </div>
+    <br>
+    <div>
+     <input type="text" name="" placeholder="LOVE PERCENTAGE" class="form-control text-center w-25 m-auto" id="lovevalue">
+    </div>
+  </div> 
+  <div class="card-footer ">God Bless Your RelationShip</div>
+</div>
+
+</header>
+
+<script>
+  function checkloveper(){
+
+let name = document.getElementById('name');
+let lname = document.getElementById('lname');
+
+if (name ==="Madhan" && lname ==="Sushmitha" || (name === "MadhanNisanth" || "Madhan Nisanth" && lname === "sushmitha")) {
+
+
+document.getElementById('lovevalue').value = "100" + "%" + "Perfect couple"; 
+} 
+else(name ==="Madhan" && lname ==="Sushmitha" || (name === "MadhanNisanth" || "Madhan Nisanth" && lname === "sushmitha"))
+{
+  var lovdata = Math.random() * 20;
+  document.getElementById("lovevalue").value = "100" + "%" + "Perfect couple" ;
+
+
+}
+
+let formData = {
+  name:name.value,
+  lname:lname.value
+}
+
+let xhr = new XMLHttpRequest();
+xhr.open("POST",'/');
+xhr.setRequestHeader('content-type','application/json');
+xhr.onload = function (){
+  console.log(xhr.responseText);
+  if(xhr.responseText == 'success'){
+    name.value = "";
+    lname.value = "";
+  }else{
+    alert ("Some thing went wrong")
+  }
+}
+xhr.send(JSON.stringify(formData));
+}
+</script>
+</body>
+
+</html>
